@@ -1,7 +1,6 @@
 class Multimedia {
     constructor(url) {
         let _url = url;
-
         this.getUrl = () => _url;
     }
 
@@ -12,16 +11,13 @@ class Multimedia {
     setInicio() {
         console.log("setinicio");
     }
-
 }
 
 class Reproductor extends Multimedia {
     constructor(url, id) {
         super(url);
         let _id = id;
-
         this.getId = () => _id;
-
     }
 
     get id() {
@@ -41,28 +37,37 @@ class Reproductor extends Multimedia {
 
 
 //funciones
-const moduloInicio = (() => {
+const moduloInicio = (() => { // funcion auto ejecutada
+    /** 
+           Se cree una función privada que reciba la url del video y el id de la etiqueta
+iframe, para así poder mostrar los videos en el documento HTML. Dato:
+puedes utilizar la instrucción “setAttribute” para manipular el DOM.
+*/
+    mostrarDatos = (url, id) => {   //funcion privada
+        console.log("en funcion privada")
 
+
+    }
     return {
-        ingresoDatos: (url,id) => {
-console.log("en ingreso datos")
-
-
+        /**  Se retorne una función pública que reciba los parámetros (url, id), y realice el
+        llamado a la función interna (privada) para insertar los elementos recibidos.  */
+        recibirDatos: (url, id) => {  //funcion publica
+            mostrarDatos(url, id); // llamado a funcion privada
+            console.log("en funcion publica");
         }
-        
-        };
-        
+    };
+
 })();
 
 //main
 
 let botonMusica = document.getElementById('botonMusica');
 let botonPelicula = document.getElementById('botonPelicula');
-let botonSerie = document.getElementById('botonSerie');
+let botonSerie = document.getElement('botonSerie');
 
-botonMusica.addEventListener('click', moduloInicio.ingresoDatos("https://www.youtube.com/embed/5PSNL1qE6VY","musica"));
-botonPelicula.addEventListener('click', moduloInicio.ingresoDatos("https://www.youtube.com/embed/5PSNL1qE6VY","musica"));
-botonSerie.addEventListener('click', moduloInicio.ingresoDatos("https://www.youtube.com/embed/5PSNL1qE6VY","musica"));
+botonMusica.addEventListener('click', moduloInicio.ingresoDatos("https://www.youtube.com/embed/5PSNL1qE6VY", "musica"));
+botonPelicula.addEventListener('click', moduloInicio.ingresoDatos("https://www.youtube.com/embed/5PSNL1qE6VY", "musica"));
+botonSerie.addEventListener('click', moduloInicio.ingresoDatos("https://www.youtube.com/embed/5PSNL1qE6VY", "musica"));
 
 
-moduloInicio.ingresoDatos("https://www.youtube.com/embed/5PSNL1qE6VY","musica")
+moduloInicio.ingresoDatos("https://www.youtube.com/embed/5PSNL1qE6VY", "musica")
