@@ -127,6 +127,4 @@ serie.playMultimedia();
 
 
 
-pelicula.setInicio()
-
 console.log(musica)
